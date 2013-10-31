@@ -1,15 +1,16 @@
 <h1><%= @restaurant.name %></h1>
-  <%= form_for [@restaurant, @comment] do |f| %>
+  <%# this form needs remote: true %>
+<div id="server-feedback"></div>
+  <%= form_for [@restaurant, @comment], remote: true do |f| %>
   <%= f.label "Add Comment:" %>
   <%= f.text_field :content %>
   <%= f.submit "Submit" %>
 <% end %>
-
-<ul>
+<ul class="comments">
 <% @restaurant.comments.each do |comment| %>
   <% if comment.content %>
   <li>
-    <%= comment.content %>
+    <%= comment.content %><i class="fa fa-thumbs-up"></i><i class="fa fa-thumbs-down"></i>
   </li>
   <% end %>
 <% end %>

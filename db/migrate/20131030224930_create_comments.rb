@@ -1,14 +1,12 @@
 class CreateComments < ActiveRecord::Migration
-  def up
+  def change
     create_table :comments do |t|
-      t.belongs_to :restaurant
+
       t.string :content
+      t.belongs_to :restaurant
+      t.belongs_to :user
 
       t.timestamps
     end
-  end
-
-  def down
-    drop_table :comments
   end
 end
