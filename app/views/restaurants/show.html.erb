@@ -10,6 +10,9 @@
   <% if comment.content %>
   <li>
     <%= comment.content %>
+    <%= link_to 'Yes', vote_up_restaurant_comment_path(@restaurant,comment)  %>
+    <%= comment.votes_for %>
+
   </li>
   <% end %>
 <% end %>
