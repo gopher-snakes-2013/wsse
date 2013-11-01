@@ -5,8 +5,8 @@
 <% end %>
 
 
-<ul>
+<ul class="restaurant_list">
 <% @restaurants.each do |restaurant| %>
-<li><%= link_to  restaurant.name, restaurant_path(restaurant) %></li>
+  <%= render "partials/restaurant_name", :restaurant => restaurant %>
 <% end %>
 </ul>
