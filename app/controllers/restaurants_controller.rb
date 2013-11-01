@@ -6,9 +6,14 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    restaurant = Restaurant.new(params[:restaurant])
-    restaurant.save
-    redirect_to root_path
+    @restaurant = Restaurant.new(params[:restaurant])
+
+    if @restaurant.save
+      render :json => {:restaurant_template => render_to_string(partial: 'partials/restaurant_name', locals: {restaurant: @restaurant})}
+    else
+      render :json => @restaurant.errors.full_messages.join(', '), :status => :unprocessable_entity
+    end
+
   end
 
   def show
