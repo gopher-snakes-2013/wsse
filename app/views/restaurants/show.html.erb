@@ -1,16 +1,14 @@
 <h1><%= @restaurant.name %></h1>
-  <%= form_for [@restaurant, @comment] do |f| %>
-  <%= f.label "Add Comment:" %>
-  <%= f.text_field :content %>
-  <%= f.submit "Submit" %>
+<%= form_for [@restaurant, @comment] do |f| %>
+<%= f.label "Add Comment:" %>
+<%= f.text_field :content %>
+<%= f.submit "Submit" %>
 <% end %>
 
-<ul>
-<% @restaurant.comments.each do |comment| %>
-  <% if comment.content %>
-  <li>
-    <%= comment.content %>
-  </li>
+<ul class="comments">
+  <% @restaurant.comments.each do |comment| %>
+    <% if comment.content %>
+      <%= render "partials/comment_content", :comment => comment %>
+    <% end %>
   <% end %>
-<% end %>
 </ul>
